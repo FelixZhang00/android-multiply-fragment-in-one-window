@@ -1,6 +1,6 @@
 package com.example.magicfragment;
 
-import android.app.Fragment;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import static android.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN;
 
@@ -40,9 +42,10 @@ public class DetailFragment extends Fragment {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.left_content, DetailFragment.newInstance("item_3"))
-                        .setTransition(TRANSIT_FRAGMENT_OPEN)
+                getParentFragmentManager().beginTransaction()
+                        .add(R.id.left_content, DetailFragment.newInstance("item_3"))
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .addToBackStack("left")
                         .commit();
             }
         });

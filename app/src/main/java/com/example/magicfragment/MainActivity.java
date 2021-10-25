@@ -13,7 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
         HomeFragment homeFragment = HomeFragment.newInstance();
         RelatedFragment relatedFragment = RelatedFragment.newInstance();
-        getFragmentManager().beginTransaction().add(R.id.left_content, homeFragment)
+
+        getSupportFragmentManager().beginTransaction().add(R.id.left_content, homeFragment)
                 .add(R.id.right_content, relatedFragment)
                 .commit();
     }
